@@ -5,6 +5,20 @@
     box-sizing: border-box;
 }
 
+/* Sfondo principale con gradiente */
+body {
+    background: linear-gradient(to bottom, #009688 150px, #DADBD4 150px);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+/* Stili per il body e html */
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
 /* Stili per il footer */
 @keyframes fadeInUp {
     from {
