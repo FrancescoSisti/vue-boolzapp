@@ -1,174 +1,104 @@
-/* Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* Variabili colore */
+/* Variabili root */
 :root {
-    --active-chat: #e9ebeb;
-    --bg-color-down: #dcdbd1;
+    --search: #f6f6f6;
     --bg-color-up: #009688;
-    --boolzap-footer: #f3eeea;
+    --bg-color-down: #dcdbd1;
     --boolzap-header: #eaeaea;
-    --icons: #b1b1b1;
-    --last-message: #bbc6d4;
+    --boolzap-footer: #f3eeea;
+    --updates-lightblue: #8edafc;
+    --active-chat: #e9ebeb;
     --message-left: #ffffff;
     --message-right: #d5f9ba;
-    --search: #f6f6f6;
-    --updates-lightblue: #8edafc;
+    --icons: #b1b1b1;
+    --last-message: #bbc6d4;
 }
 
-/* Stili generali */
-html,
+/* Stile generale */
 body {
-    height: 100%;
-    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(rgb(0, 150, 136), 10%, grey, 10%, rgb(217, 219, 212));
+    padding-top: 3vh;
+    font-family: 'Lato', sans-serif;
 }
 
-body {
-    background: linear-gradient(to bottom, #009688 150px, #DADBD4 150px);
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+img {
+    border-radius: 50%;
+    height: 40px;
 }
 
-/* Contenitore principale dell'app */
-.boolzapp-main-container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 1000px;
-    justify-content: center;
-    margin: auto;
-    max-width: 1200px;
-    width: 100%;
-}
-
-
-/* Animazioni */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Stili per il footer */
-footer {
-    animation: fadeInUp 0.5s ease-out;
-    background-color: #1a1a2e;
-    bottom: 0;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
-    color: #e0e0e0;
-    font-family: 'Arial', sans-serif;
-    padding: 25px 0;
-    position: fixed;
-    text-align: center;
-    width: 100%;
-}
-
-footer .footer-content {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+/* Contenitore principale */
+.boolzapp {
+    padding: 0;
+    background-color: aquamarine;
     margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-footer .footer-text {
-    font-size: 0.9em;
-    letter-spacing: 0.5px;
-    margin: 0 15px;
-    transition: all 0.3s ease;
+/* Sezione sinistra */
+.boolzap-left {
+    flex-basis: 35%;
+    height: 94vh;
+    border-right: 1px solid blue;
 }
 
-footer a {
-    color: #64ffda;
-    font-weight: bold;
-    overflow: hidden;
-    position: relative;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-footer a::after {
-    background-color: #64ffda;
-    bottom: 0;
-    content: '';
-    height: 2px;
-    left: 0;
-    position: absolute;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+.boolzap-header-left {
     width: 100%;
+    height: 7%;
+    background-color: var(--boolzap-header);
 }
 
-footer a:hover::after {
-    transform: scaleX(1);
+.boolzap-notify {
+    width: 100%;
+    height: 7%;
+    background-color: var(--updates-lightblue);
 }
 
-footer a:hover {
-    color: #00bfa5;
+.boolzap-notify i {
+    background-color: white;
+    border-radius: 50%;
+    padding: 15px;
+    color: var(--updates-lightblue);
 }
 
-footer .github-icon {
-    font-size: 1.4em;
-    margin-right: 8px;
-    transition: transform 0.3s ease;
-    vertical-align: middle;
+.boolzap-search {
+    width: 100%;
+    height: 7%;
+    background-color: var(--search);
 }
 
-footer a:hover .github-icon {
-    transform: rotate(360deg) scale(1.1);
+.boolzap-search .search-area {
+    width: 100%;
+    height: 100%;
 }
 
-/* Media query */
-@media screen and (max-width: 1200px) {
-    .boolzapp-main-container {
-        height: 95vh;
-        width: 95%;
-    }
+.boolzap-contacs {
+    width: 100%;
+    height: 7%;
+    background-color: red;
 }
 
-@media screen and (max-width: 768px) {
-    .boolzapp-main-container {
-        height: 100vh;
-        width: 100%;
-    }
+/* Sezione destra */
+.boolzap-right {
+    flex-basis: 65%;
+    height: 94vh;
 }
 
-@media screen and (max-width: 480px) {
-    .boolzapp-main-container {
-        height: 100vh;
-        width: 100%;
-    }
-
-    body {
-        padding: 10px;
-    }
+.boolzap-header-right {
+    width: 100%;
+    height: 7%;
+    background-color: var(--boolzap-header);
 }
 
-@media (max-width: 600px) {
-    footer {
-        padding: 20px 0;
-    }
+.boolzap-chat {
+    width: 100%;
+    height: 86%;
+    background-image: url(../img/mine.png);
+    background-size: contain;
+}
 
-    footer .footer-content {
-        flex-direction: column;
-    }
-
-    footer .footer-text {
-        margin: 8px 0;
-    }
+.boolzap-footer {
+    width: 100%;
+    height: 7%;
+    background-color: var(--boolzap-footer);
 }
