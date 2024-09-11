@@ -26,85 +26,91 @@
 </head>
 
 <body>
-    <div class="boolzapp container-fluid w-75 d-flex">
-        <div class="boolzap-left">
-            <div class="boolzap-header-left d-flex align-items-center justify-content-between p-3">
-                <div class="profile-pic d-flex align-items-center">
-                    <img src="./img/avatar_io.png" alt="Avatar">
-                    <span class="px-2">Francesca</span>
+    <div id="app">
+        <div class="boolzapp container-fluid w-75 d-flex">
+            <div class="boolzap-left">
+                <div class="boolzap-header-left d-flex align-items-center justify-content-between p-3">
+                    <div class="profile-pic d-flex align-items-center">
+                        <img src="./img/avatar_io.png" alt="Avatar">
+                        <span class="px-2">Francesca</span>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
                 </div>
-                <div class="d-flex gap-3">
-                    <i class="fa-solid fa-rotate-right"></i>
-                    <i class="fa-solid fa-message"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                <div class="boolzap-notify d-flex">
+                    <div class="d-flex align-items-center p-2">
+                        <i class="fa-solid fa-bell-slash"></i>
+                        <div class="ms-3">
+                            <p class="mb-0"><strong>Ricevi notifiche di nuovi messaggi</strong></p>
+                            <p class="mb-0"><small><u>Attiva notifiche desktop</u></small></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="boolzap-notify d-flex">
-                <div class="d-flex align-items-center p-2">
-                    <i class="fa-solid fa-bell-slash"></i>
-                    <div class="ms-3">
-                        <p class="mb-0"><strong>Ricevi notifiche di nuovi messaggi</strong></p>
-                        <p class="mb-0"><small><u>Attiva notifiche desktop</u></small></p>
+                <div class="boolzap-search">
+                    <div class="search-area d-flex align-items-center p-2">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0"
+                                placeholder="Cerca o inizia una nuova chat">
+                        </div>
+                    </div>
+                </div>
+                <div class="boolzap-contacs">
+                    <div v-for="contact in contacts" :key="contact.name"
+                        class="contact-card d-flex align-items-center p-2 border-bottom">
+                        <img :src="contact.avatar" :alt="contact.name" class="me-3">
+                        <div>
+                            <h6 class="mb-0">{{ contact.name }}</h6>
+                            <small class="text-muted">{{ getLastMessage(contact) }}</small>
+                        </div>
+                        <small class="ms-auto text-muted">{{ getLastMessageDate(contact) }}</small>
                     </div>
                 </div>
             </div>
-            <div class="boolzap-search">
-                <div class="search-area d-flex align-items-center p-2">
-                    <div class="input-group">
-                        <span class="input-group-text bg-white border-end-0">
-                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                        </span>
-                        <input type="text" class="form-control border-start-0"
-                            placeholder="Cerca o inizia una nuova chat">
+            <div class="boolzap-right">
+                <div class="boolzap-header-right d-flex align-items-center p-3 justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <img src="./img/avatar_1.png" alt="Avatar" class="me-3">
+                        <div>
+                            <h6 class="mb-0">Michele</h6>
+                            <small class="text-muted">Ultimo accesso oggi alle </small>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div class="boolzap-chat">
+                </div>
+                <div class="boolzap-footer">
+                    <div class="d-flex align-items-center p-2">
+                        <div class="mx-3">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </div>
+                        <div class="input-group flex-grow-1">
+                            <input type="text" class="form-control" placeholder="Scrivi un messaggio">
+                        </div>
+                        <div class="mx-3">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="boolzap-contacs"></div>
         </div>
-        <div class="boolzap-right">
-            <div class="boolzap-header-right d-flex align-items-center p-3 justify-content-between">
-                <div class="d-flex align-items-center">
-                    <img src="./img/avatar_1.png" alt="Avatar" class="me-3">
-                    <div>
-                        <h6 class="mb-0">Michele</h6>
-                        <small class="text-muted">Ultimo accesso oggi alle </small>
-                    </div>
-                </div>
-                <div class="d-flex gap-3">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-paperclip"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
-            <div class="boolzap-chat">
-            </div>
-            <div class="boolzap-footer">
-                <div class="d-flex align-items-center p-2">
-                    <div class="mx-3">
-                        <i class="fa-regular fa-face-smile"></i>
-                    </div>
-                    <div class="input-group flex-grow-1">
-                        <input type="text" class="form-control" placeholder="Scrivi un messaggio">
-                    </div>
-                    <div class="mx-3">
-                        <i class="fa-solid fa-microphone"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <!-- Link JS -->
-    <script src="script/script.js"></script>
-    <!-- Integrazione libreria Vue -->
-    <script src="https://unpkg.com/vue@3.2.41/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <!-- Link JS -->
+        <script src="script/script.js"></script>
+        <!-- Integrazione libreria Vue -->
+        <script src="https://unpkg.com/vue@3"></script>
 </body>
 
 </html>

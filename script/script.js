@@ -1,5 +1,9 @@
-console.log(`JS OK`);
+const { createApp } = Vue;
 
-import contacts from "./contacts.js";
-
-console.log(contacts);
+createApp({
+    data() {
+        return {
+            message: 'Ciao, benvenuto in Vue!'
+        };
+    }
+}).mount('#app');
