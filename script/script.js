@@ -205,6 +205,13 @@ createApp({
             const messageDate = luxon.DateTime.fromFormat(date, 'dd/MM/yyyy HH:mm:ss');
             return messageDate.toFormat('HH:mm');
         },
+        getLastMessageTime(contact) {
+            if (contact.messages.length > 0) {
+                return this.formatMessageTime(contact.messages[contact.messages.length - 1].date);
+            } else {
+                return "";
+            }
+        },
     },
     mounted() {
         this.activeContact = this.contacts[0];
