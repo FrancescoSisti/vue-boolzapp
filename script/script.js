@@ -184,6 +184,13 @@ createApp({
 
                 // Ripulisco il campo di input dopo l'invio
                 this.newMessage = '';
+                setTimeout(() => {
+                    this.activeContact.messages.push({
+                        date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'), // Data e ora attuale
+                        message: 'ok!', // Messaggio di risposta
+                        status: 'received'
+                    });
+                }, 1000);
             }
         },
     },
