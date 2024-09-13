@@ -27,7 +27,7 @@
 
 <body>
     <div id="app">
-        <div class="boolzapp container-fluid w-75 d-flex">
+        <div class="boolzapp container-fluid w-75 d-flex px-0">
             <div class="boolzap-left">
                 <div class="boolzap-header-left d-flex align-items-center justify-content-between p-3">
                     <div class="profile-pic d-flex align-items-center">
@@ -61,9 +61,9 @@
                     </div>
                 </div>
                 <div>
-                    <ul>
+                    <ul class="ps-0">
                         <li @click="selectContact(contact)" v-for="contact in contacts" :key="contact.name"
-                            class="contact-card d-flex align-items-center p-2 border-bottom boolzap-contacs">
+                            class="contact-card d-flex align-items-center p-2 border-bottom boolzap-contacs ms-0">
                             <img :src="contact.avatar" :alt="contact.name" class="me-3">
                             <div>
                                 <h6 class="mb-0">{{contact.name}}</h6>
@@ -74,7 +74,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="boolzap-right">
+            <div class="boolzap-right" v-if="activeContact">
                 <div class="boolzap-header-right d-flex align-items-center p-3 justify-content-between">
                     <div class="d-flex align-items-center">
                         <img :src="activeContact.avatar" :alt="activeContact.name" class="me-3">
@@ -89,7 +89,7 @@
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-                <div class="boolzap-chat">
+                <div class="boolzap-chat d-flex flex-column">
                     <div v-for="(message, index) in activeContact.messages" :key="message.date"
                         :class="['message', message.status]">
                         <p>{{message.message}}</p>
@@ -97,19 +97,19 @@
                     </div>
                 </div>
                 <div class="boolzap-footer d-flex align-items-center p-3">
-                    <input type="text" class="form-control me-3" placeholder="Scrivi un messaggio">
-                    <i class="fa-solid fa-paper-plane"></i>
+                    <input v-model="newMessage" @keyup.enter="addMessage" type="text"
+                        placeholder="Scrivi un messaggio..." />
+                    <i class="fa-solid fa-paper-plane" @click="addMessage"></i>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Integrazione libreria Vue -->
-    <script src="https://unpkg.com/vue@3"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
-    <!-- Link JS -->
-    <script src="script/script.js"></script>
+        <!-- Integrazione libreria Vue -->
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+            </script>
+        <!-- Link JS -->
+        <script src="script/script.js"></script>
 </body>
 
 </html>

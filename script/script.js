@@ -4,6 +4,7 @@ createApp({
     data() {
         return {
             activeContact: null,
+            newMessage: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -172,7 +173,19 @@ createApp({
     methods: {
         selectContact(contact) {
             this.activeContact = contact;
-        }
+        },
+        addMessage() {
+            if (this.newMessage.trim() !== '') {
+                this.activeContact.messages.push({
+                    date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'), // Uso Luxon per ottenere la data attuale
+                    message: this.newMessage,
+                    status: 'sent'
+                });
+
+                // Ripulisco il campo di input dopo l'invio
+                this.newMessage = '';
+            }
+        },
     },
     mounted() {
         this.activeContact = this.contacts[0];

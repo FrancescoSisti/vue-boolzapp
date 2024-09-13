@@ -33,7 +33,6 @@ i {
 
 /* Contenitore principale */
 .boolzapp {
-    padding: 0;
     /* background-color: aquamarine; */
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -105,4 +104,14 @@ i {
     width: 100%;
     height: 7%;
     background-color: var(--boolzap-footer);
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: var(--message-right);
+}
+
+.received {
+    align-self: flex-start;
+    background-color: var(--message-left);
 }
