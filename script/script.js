@@ -5,6 +5,7 @@ createApp({
         return {
             activeContact: null,
             newMessage: '',
+            searchBar: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -169,6 +170,13 @@ createApp({
                 }
             ]
         };
+    },
+    computed: {
+        filteredContacts() {
+            return this.contacts.filter(contact => {
+                return contact.name.toLowerCase().includes(this.searchBar.toLowerCase());
+            });
+        }
     },
     methods: {
         selectContact(contact) {
