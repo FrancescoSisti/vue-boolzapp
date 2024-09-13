@@ -201,6 +201,10 @@ createApp({
                 }, 1000);
             }
         },
+        formatMessageTime(date) {
+            const messageDate = luxon.DateTime.fromFormat(date, 'dd/MM/yyyy HH:mm:ss');
+            return messageDate.toFormat('HH:mm');
+        },
     },
     mounted() {
         this.activeContact = this.contacts[0];

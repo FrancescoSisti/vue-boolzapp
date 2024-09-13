@@ -115,3 +115,18 @@ i {
     align-self: flex-start;
     background-color: var(--message-left);
 }
+
+.sent,
+.received {
+    border-radius: 10px;
+    padding: 5px;
+    margin: 15px 10px;
+    display: flex;
+}
+
+.formatMessage {
+    position: relative;
+    top: 25px;
+    right: 5px;
+    font-size: 0.70rem;
+}

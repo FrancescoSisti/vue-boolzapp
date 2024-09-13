@@ -93,7 +93,7 @@
                     <div v-for="(message, index) in activeContact.messages" :key="message.date"
                         :class="['message', message.status]">
                         <p>{{message.message}}</p>
-                        <small>{{message.date}}</small>
+                        <small class="formatMessage">{{ formatMessageTime(message.date) }}</small>
                     </div>
                 </div>
                 <div class="boolzap-footer d-flex align-items-center p-3">
@@ -103,13 +103,14 @@
                 </div>
             </div>
         </div>
-        <!-- Integrazione libreria Vue -->
-        <script src="https://unpkg.com/vue@3"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-            </script>
-        <!-- Link JS -->
-        <script src="script/script.js"></script>
+    </div>
+    <!-- Integrazione libreria Vue -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <!-- Link JS -->
+    <script src="script/script.js"></script>
 </body>
 
 </html>
